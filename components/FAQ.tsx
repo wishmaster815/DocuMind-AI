@@ -55,7 +55,7 @@ const baseTextClass = "2xl:text-base text-sm";
 
 function FAQ() {
   return (
-    <div className="container mx-auto p-10">
+    <div className="container mx-auto p-10" id="faq">
       <h1 className="text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent mb-16">
         Frequently Asked Questions
       </h1>

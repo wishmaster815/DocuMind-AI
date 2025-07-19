@@ -1,9 +1,12 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { MyNavbar } from "@/components/Navbar";
 import LenisProvider from "@/components/ui/LensProvider";
-import "./globals.css";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,22 +20,26 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "DocuMind AI",
-  description: "Ask from PDfs in seconds",
+  description: "Ask from PDFs in seconds",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <MyNavbar />
-        <LenisProvider>{children}</LenisProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className="scroll-smooth">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <MyNavbar />
+          <LenisProvider>{children}</LenisProvider>
+          <Footer />
+          <ScrollToTop />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -21,7 +21,7 @@ export function CTA() {
           DocuMind
         </p>
       </div>
-      <NavbarButton variant="primary" className=" text-xl">Start for Free </NavbarButton>
+      <NavbarButton variant="primary" className=" text-lg">Start for Free </NavbarButton>
     </div>
   );
 }

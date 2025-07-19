@@ -4,15 +4,32 @@ import {
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandTwitter,
+  IconBrandZapier,
+  IconFlare,
+  IconMoneybag,
+  IconNote,
+  IconReceipt,
+  IconReceipt2,
+  IconSettings,
+  IconSettingsExclamation,
+  IconUserQuestion,
+  IconZeppelin,
 } from "@tabler/icons-react";
+import Image from "next/image";
 import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-950 text-neutral-400 py-10 px-6 md:px-16 ">
+    <footer
+      className="bg-neutral-950 text-neutral-400 py-10 px-6 md:px-16 "
+      id="footer"
+    >
       <div className="max-w-7xl mx-auto content-center grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <h3 className="text-white text-lg font-semibold mb-3">DocuMind</h3>
+          <div className="flex items-center space-x-2 mb-4 ">
+            <Image src="/logo.svg" alt="logo" width={32} height={32} />
+            <h3 className="text-white text-lg font-semibold ">DocuMind</h3>
+          </div>
           <p className="">
             Instantly interact with your documents using AI. Upload PDFs, ask
             questions, get answers — fast and simple.
@@ -20,49 +37,85 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 className="text-white font-medium mb-3">Product</h4>
+          <h4 className="text-white font-bold mb-3">Product</h4>
           <ul className="space-y-2 ">
             <li>
-              <a href="#" className="hover:text-white transition">
-                Features
+              <a
+                href="#features"
+                className="hover:text-white transition  justify-center gap-1 "
+              >
+                <div className="flex gap-1.5">
+                  <IconFlare />
+                  <p>Features</p>
+                </div>
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-white transition">
-                Pricing
+              <a
+                href="#pricing"
+                className="hover:text-white transition  justify-center gap-1 "
+              >
+                <div className="flex gap-1.5">
+                  <IconReceipt2 />
+                  <p>Pricing</p>
+                </div>
+              </a>
+            </li>
+            {/* <li>
+              <a
+                href="#"
+                className="hover:text-white transition  justify-center gap-1 "
+              >
+                <div className="flex gap-1.5">
+                  <IconBrandZapier />
+                  <p>Use Cases</p>
+                </div>
+              </a>
+            </li> */}
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-white font-bold mb-3">Resources</h4>
+          <ul className="space-y-2 ">
+            <li>
+              <a
+                href="#"
+                className="hover:text-white transition  justify-center gap-1 "
+              >
+                <div className="flex gap-1.5">
+                  <IconNote />
+                  <p>Docs</p>
+                </div>
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-white transition">
-                Use Cases
+              <a
+                href="#faq"
+                className="hover:text-white transition  justify-center gap-1 "
+              >
+                <div className="flex gap-1.5">
+                  <IconUserQuestion />
+                  <p>FAQ</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/terms"
+                className="hover:text-white transition  justify-center gap-1 "
+              >
+                <div className="flex gap-1.5">
+                  <IconSettings />
+                  <p>Terms and Conditions</p>
+                </div>
               </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-white font-medium mb-3">Resources</h4>
-          <ul className="space-y-2 ">
-            <li>
-              <a href="#" className="hover:text-white transition">
-                Docs
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition">
-                FAQs
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition">
-                Support
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-white font-medium mb-3">Socials</h4>
+          <h4 className="text-white font-bold mb-3">Socials</h4>
           <ul className="space-y-2 ">
             <li>
               <a href="#" className="hover:text-white transition">
@@ -77,7 +130,7 @@ const Footer = () => {
                 <div className="flex gap-1.5 ">
                   <IconBrandInstagram />
                   <p>Instagram</p>
-                </div>{" "}
+                </div>
               </a>
             </li>
             <li>

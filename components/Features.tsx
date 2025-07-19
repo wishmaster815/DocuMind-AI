@@ -17,63 +17,69 @@ import {
   IconUsers,
 } from "@tabler/icons-react";
 
+const features = [
+  {
+    title: "Built for developers",
+    description:
+      "Built for engineers, developers, dreamers, thinkers and doers.",
+    icon: <IconTerminal2 />,
+  },
+  {
+    title: "Ask Anything",
+    description:
+      "Whether it's a summary or a specific clause — just ask. DocuMind gives you the exact info from your PDFs.",
+    icon: <IconMessageCircleQuestion />,
+  },
+  {
+    title: "Contextual Memory",
+    description:
+      "Your conversation evolves. DocuMind remembers what you asked earlier and keeps the context flowing.",
+    icon: <IconBrain />,
+  },
+  {
+    title: "Lightning-Fast Answers",
+    description:
+      "Powered by Groq LLM, DocuMind delivers real-time answers without lag — even for large documents.",
+    icon: <IconBrandZapier />,
+  },
+  {
+    title: "Private by Design",
+    description:
+      "Data privacy comes first. All files and chats are processed securely with GDPR compliance.",
+    icon: <IconShieldCheck />,
+  },
+  {
+    title: "Built for Teams",
+    description:
+      "Collaborate seamlessly across your team — whether you're analyzing contracts or discussing reports.",
+    icon: <IconUsers />,
+  },
+  {
+    title: "Intelligent Summaries",
+    description:
+      "Don’t just search, understand. Get AI-generated summaries that make sense instantly.",
+    icon: <IconNotes />,
+  },
+  {
+    title: "Developer-Friendly API",
+    description:
+      "Integrate DocuMind into your tools and workflows with robust APIs for automation and scaling.",
+    icon: <IconCode />,
+  },
+];
+
 export function Features() {
-  const features = [
-    {
-      title: "Built for developers",
-      description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
-      icon: <IconTerminal2 />,
-    },
-    {
-      title: "Ask Anything",
-      description:
-        "Whether it's a summary or a specific clause — just ask. DocuMind gives you the exact info from your PDFs.",
-      icon: <IconMessageCircleQuestion />,
-    },
-    {
-      title: "Contextual Memory",
-      description:
-        "Your conversation evolves. DocuMind remembers what you asked earlier and keeps the context flowing.",
-      icon: <IconBrain />,
-    },
-    {
-      title: "Lightning-Fast Answers",
-      description:
-        "Powered by Groq LLM, DocuMind delivers real-time answers without lag — even for large documents.",
-      icon: <IconBrandZapier />,
-    },
-    {
-      title: "Private by Design",
-      description:
-        "Data privacy comes first. All files and chats are processed securely with GDPR compliance.",
-      icon: <IconShieldCheck />,
-    },
-    {
-      title: "Built for Teams",
-      description:
-        "Collaborate seamlessly across your team — whether you're analyzing contracts or discussing reports.",
-      icon: <IconUsers />,
-    },
-    {
-      title: "Intelligent Summaries",
-      description:
-        "Don’t just search, understand. Get AI-generated summaries that make sense instantly.",
-      icon: <IconNotes />,
-    },
-    {
-      title: "Developer-Friendly API",
-      description:
-        "Integrate DocuMind into your tools and workflows with robust APIs for automation and scaling.",
-      icon: <IconCode />,
-    },
-  ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10  max-w-7xl mx-auto">
-      {features.map((feature, index) => (
-        <Feature key={feature.title} {...feature} index={index} />
-      ))}
-    </div>
+    <section id="features">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent mb-16">
+        Access DocuMind anytime, anywhere.
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10  max-w-7xl mx-auto">
+        {features.map((feature, index) => (
+          <Feature key={feature.title} {...feature} index={index} />
+        ))}
+      </div>
+    </section>
   );
 }
 
