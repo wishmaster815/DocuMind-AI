@@ -27,7 +27,7 @@ export function Hero() {
             paragraph.
           </p>
         </div>
-        <NavbarButton variant="primary" className=" text-lg">
+        <NavbarButton href="/upload" variant="primary" className=" text-lg">
           Start for Free
         </NavbarButton>
       </div>
