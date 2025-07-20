@@ -29,11 +29,13 @@ export default function ChatPage() {
         method: "POST",
         body: formData,
       });
+
       const data = await res.json();
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.answer },
-      ]);
+      const aiReply =
+        data.answer?.trim() ||
+        "⚠️ I couldn't find anything in your document. Please make sure embeddings were generated successfully.";
+
+      setMessages((prev) => [...prev, { role: "assistant", content: aiReply }]);
       setInput("");
     } catch (err) {
       console.error("Error chatting with backend", err);
@@ -43,7 +45,7 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="mt-40  p-6 max-w-4xl mx-auto">
+    <div className="mt-40 p-6 max-w-4xl mx-auto">
       <div className="space-y-4 mb-4">
         {messages.map((msg, i) => (
           <div
@@ -75,7 +77,7 @@ export default function ChatPage() {
         <button
           type="submit"
           disabled={isLoading}
-          className="bg-blue-600  px-4 py-2 rounded"
+          className="bg-blue-600 px-4 py-2 rounded"
         >
           Send
         </button>
