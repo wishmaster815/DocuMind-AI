@@ -4,16 +4,11 @@ import {
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandTwitter,
-  IconBrandZapier,
   IconFlare,
-  IconMoneybag,
   IconNote,
-  IconReceipt,
   IconReceipt2,
   IconSettings,
-  IconSettingsExclamation,
   IconUserQuestion,
-  IconZeppelin,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import React from "react";
@@ -21,7 +16,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer
-      className="bg-neutral-950 text-neutral-400 py-10 px-6 md:px-16 "
+      className="bg-neutral-950 w-full text-neutral-400 pt-10 px-6 md:px-16 "
       id="footer"
     >
       <div className="max-w-7xl mx-auto content-center grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -61,17 +56,6 @@ const Footer = () => {
                 </div>
               </a>
             </li>
-            {/* <li>
-              <a
-                href="#"
-                className="hover:text-white transition  justify-center gap-1 "
-              >
-                <div className="flex gap-1.5">
-                  <IconBrandZapier />
-                  <p>Use Cases</p>
-                </div>
-              </a>
-            </li> */}
           </ul>
         </div>
 

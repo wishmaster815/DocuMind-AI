@@ -1,9 +1,14 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 
 export default function ChatPage() {
+  const { isSignedIn, isLoaded } = useAuth();
+  const router = useRouter();
+
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<{ role: string; content: string }[]>(
     []
@@ -12,6 +17,14 @@ export default function ChatPage() {
 
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session");
+
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) {
+      router.push("/sign-in");
+    }
+  }, [isLoaded, isSignedIn]);
+
+  if (!isSignedIn) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

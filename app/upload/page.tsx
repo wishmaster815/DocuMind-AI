@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FileUpload } from "@/components/ui/file-upload";
-import { Button } from "@/components/ui/button";
+import { NavbarButton } from "@/components/ui/resizable-navbar";
 
 export default function UploadPage() {
   const [files, setFiles] = useState<File[]>([]);
@@ -38,7 +38,7 @@ export default function UploadPage() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6">
+    <div className="w-full max-w-4xl mx-auto h-screen p-6 flex flex-col justify-center text-center">
       <div className="text-2xl font-bold mb-4">Upload your PDFs</div>
 
       <div className="min-h-96 border border-dashed bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
@@ -52,9 +52,11 @@ export default function UploadPage() {
       {sessionId && (
         <div className="mt-6">
           <p className="mb-2 text-green-600">PDFs processed successfully!</p>
-          <Button onClick={() => router.push(`/chat?session=${sessionId}`)}>
+          <NavbarButton
+            onClick={() => router.push(`/chat?session=${sessionId}`)}
+          >
             Start Asking Questions
-          </Button>
+          </NavbarButton>
         </div>
       )}
     </div>
