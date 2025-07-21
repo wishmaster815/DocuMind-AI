@@ -75,22 +75,18 @@ export function MyNavbar() {
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            <div className="flex flex-col items-start gap-4">
+
+            {/* Auth Section */}
+            <div className="flex flex-col items-start gap-4 mt-4">
               <SignedOut>
                 <SignInButton mode="modal">
                   <NavbarButton className="w-full">Sign In</NavbarButton>
                 </SignInButton>
-              </SignedOut>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </div>
-            <div className="flex items-center gap-8">
-              <SignedOut>
-                <NavbarButton>
-                  <button className="btn-signin">Sign In</button>
+                <NavbarButton className="w-full">
+                  <button className="btn-signin">Sign Up</button>
                 </NavbarButton>
               </SignedOut>
+
               <SignedIn>
                 <UserButton />
               </SignedIn>

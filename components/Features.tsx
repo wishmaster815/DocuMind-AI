@@ -1,17 +1,10 @@
 import { cn } from "@/lib/utils";
 import {
-  IconAdjustmentsBolt,
   IconBrain,
   IconBrandZapier,
-  IconCloud,
   IconCode,
-  IconCurrencyDollar,
-  IconEaseInOut,
-  IconHeart,
-  IconHelp,
   IconMessageCircleQuestion,
   IconNotes,
-  IconRouteAltLeft,
   IconShieldCheck,
   IconTerminal2,
   IconUsers,

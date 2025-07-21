@@ -2,11 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  IconArrowUp,
-  IconArrowUpCircle,
-  IconArrowUpDashed,
-} from "@tabler/icons-react";
+import { IconArrowUp } from "@tabler/icons-react";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);

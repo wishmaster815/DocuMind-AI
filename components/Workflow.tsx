@@ -4,6 +4,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { animate, scroll, spring } from "motion";
+import { titles, bgColors } from "@/data";
 
 export function Workflow(): JSX.Element {
   const ulRef = useRef<HTMLUListElement | null>(null);
@@ -41,42 +42,6 @@ export function Workflow(): JSX.Element {
       });
     }
   }, []);
-  const titles = ["Upload", "Embed", "Ask", "Answer", "Summarize"];
-  const bgColors = [
-    "bg-cyan-500", // Calm tech tone
-    "bg-indigo-500", // Innovation + depth
-    "bg-emerald-500", // Success + intelligence
-    "bg-purple-500", // Creativity + premium feel
-    "bg-[#FFD700]", // Classic Gold
-  ];
-
-  //   const data = [
-  //     {
-  //       title: "Upload",
-  //       bgColor: "bg-red-400",
-  //       image: "",
-  //     },
-  //     {
-  //       title: "Embed",
-  //       bgColor: "bg-blue-400",
-  //       image: "",
-  //     },
-  //     {
-  //       title: "Ask",
-  //       bgColor: "bg-orange-400",
-  //       image: "",
-  //     },
-  //     {
-  //       title: "Answer",
-  //       bgColor: "bg-yellow-400",
-  //       image: "",
-  //     },
-  //     {
-  //       title: "Summarize",
-  //       bgColor: "bg-green-400",
-  //       image: "",
-  //     },
-  //   ];
 
   return (
     <main>

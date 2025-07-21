@@ -17,14 +17,17 @@ export default function ChatPage() {
 
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session");
-
   useEffect(() => {
-    if (isLoaded && !isSignedIn) {
-      router.push("/sign-in");
-    }
-  }, [isLoaded, isSignedIn]);
+    if (!isLoaded) return;
 
-  if (!isSignedIn) return null;
+    if (!isSignedIn) {
+      router.push("/sign-in");
+    } else if (!sessionId) {
+      router.push("/upload");
+    }
+  }, [isLoaded, isSignedIn, sessionId]);
+
+  if (!isLoaded || !isSignedIn || !sessionId) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

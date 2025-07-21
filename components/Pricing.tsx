@@ -1,39 +1,5 @@
 import React from "react";
-
-const pricingPlans = [
-  {
-    name: "Free",
-    price: "₹0",
-    description: "Perfect to get started",
-    features: ["Upload up to 3 PDFs", "Basic AI Q&A", "Limited memory"],
-    cta: "Get Started",
-  },
-  {
-    name: "Pro",
-    price: "₹499/mo",
-    description: "Advanced features for power users",
-    features: [
-      "Unlimited PDFs",
-      "Fast AI responses",
-      "Full memory support",
-      "Priority support",
-    ],
-    cta: "Upgrade to Pro",
-    highlighted: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    description: "Tailored solutions for your business",
-    features: [
-      "Team collaboration",
-      "Custom integrations",
-      "Dedicated support",
-      "Deployment assistance",
-    ],
-    cta: "Contact Sales",
-  },
-];
+import { pricingPlans } from "@/data";
 
 const Pricing = () => {
   return (

@@ -132,7 +132,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t border-neutral-800 mt-10 pt-6 text-sm text-center text-neutral-600">
+      <div className="border-t border-neutral-800 mt-10 py-6 text-sm text-center text-neutral-600">
         <p>© {new Date().getFullYear()} DocuMind. All rights reserved.</p>
       </div>
     </footer>
