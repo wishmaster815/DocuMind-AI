@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { NavbarButton } from "./ui/resizable-navbar";
+import { ZapIcon } from "lucide-react";
 
 export function Hero() {
   const { isSignedIn } = useAuth();
@@ -21,6 +22,10 @@ export function Hero() {
   return (
     <main id="home">
       <div className="relative flex flex-col h-screen w-full items-center justify-center bg-white dark:bg-black">
+        <div className="inline-flex px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
+          <ZapIcon className="w-4 h-4 mr-2" />
+          Powered by Advanced AI
+        </div>
         <div
           className={cn(
             "absolute inset-0",
@@ -32,7 +37,7 @@ export function Hero() {
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
 
         <div className="flex flex-col">
-          <p className="relative z-20 bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text p-9 text-lg font-extrabold text-transparent sm:text-7xl text-center">
+          <p className="relative z-20 bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text p-9 pt-6 text-lg font-extrabold text-transparent sm:text-7xl text-center">
             Understand Your PDFs <br /> in Seconds with AI
           </p>
           <p className="relative bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text p-9 text-lg font-bold text-transparent sm:text-3xl text-center">

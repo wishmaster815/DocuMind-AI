@@ -22,10 +22,13 @@ export default function UploadPage() {
     });
 
     try {
-      const response = await fetch("http://localhost:8000/upload/", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://documind-fastapi.onrender.com/upload/",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!response.ok) throw new Error("Upload failed");
       const data = await response.json();

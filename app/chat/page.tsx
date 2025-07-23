@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import { ZapIcon } from "lucide-react";
 
 export default function ChatPage() {
   const { isSignedIn, isLoaded } = useAuth();
@@ -14,6 +15,7 @@ export default function ChatPage() {
     []
   );
   const [isLoading, setIsLoading] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session");
@@ -32,6 +34,7 @@ export default function ChatPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || !sessionId) return;
+    if (!hasStarted) setHasStarted(true);
 
     setMessages((prev) => [...prev, { role: "user", content: input }]);
     setIsLoading(true);
@@ -41,7 +44,7 @@ export default function ChatPage() {
     formData.append("input", input);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/chat/", {
+      const res = await fetch("https://documind-fastapi.onrender.com/chat/", {
         method: "POST",
         body: formData,
       });
@@ -61,30 +64,38 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="mt-40 p-6 max-w-4xl mx-auto">
-      <div className="space-y-4 mb-4">
-        {messages.map((msg, i) => (
+    <div className=" p-6 max-w-4xl mx-auto h-screen  content-center">
+      {!hasStarted && (
+        <>
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
+              <ZapIcon className="w-4 h-4 mr-2" />
+              Powered by Advanced AI
+            </div>
+          </div>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text text-transparent mb-8">
+            <span>No more scrolling, just ask.</span>
+          </h1>
+        </>
+      )}
+      {/* Render chat messages */}
+      <div className="my-6 space-y-4">
+        {messages.map((msg, idx) => (
           <div
-            key={i}
+            key={idx}
             className={`p-3 rounded-lg ${
               msg.role === "user"
-                ? "bg-blue-950 text-right"
-                : "bg-green-950 text-left"
+                ? "bg-blue-900 text-right ml-auto max-w-[70%]"
+                : "bg-gray-900 text-left mr-auto max-w-[70%]"
             }`}
           >
-            <ReactMarkdown>
-              {msg.role === "user"
-                ? `**You:** ${msg.content}`
-                : `**AI:** ${msg.content}`}
-            </ReactMarkdown>
+            <ReactMarkdown>{msg.content}</ReactMarkdown>
           </div>
         ))}
-        {isLoading && <p className="text-gray-400 italic">Thinking...</p>}
       </div>
-
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input
-          className="flex-1 border border-gray-300 px-3 py-2 rounded"
+          className="flex-1 border border-gray-300 px-3 py-2 rounded-2xl"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask your document something..."
@@ -93,7 +104,7 @@ export default function ChatPage() {
         <button
           type="submit"
           disabled={isLoading}
-          className="bg-blue-600 px-4 py-2 rounded"
+          className="bg-blue-600 px-4 py-2 rounded-2xl"
         >
           Send
         </button>
