@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useEffect, useRef } from "react";
-import { animate, scroll, spring } from "motion";
+import { animate, scroll } from "motion";
 import { titles, bgColors } from "@/data";
 
 export function Workflow(): React.JSX.Element {
@@ -22,11 +22,9 @@ export function Workflow(): React.JSX.Element {
 
     // ✅ Use element reference directly — no TypeScript error
     const controls = animate(
-      container as any,
+      container as HTMLUListElement,
       { transform: [`translateX(0px)`, `translateX(${calculated}px)`] },
-      {
-        duration: 1,
-      }
+      { duration: 1 }
     );
 
     scroll(controls, {
