@@ -6,13 +6,13 @@ import { FileUpload } from "@/components/ui/file-upload";
 import { NavbarButton } from "@/components/ui/resizable-navbar";
 
 export default function UploadPage() {
-  const [files, setFiles] = useState<File[]>([]);
+  // const [files, setFiles] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState(false);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const router = useRouter();
 
   const handleFileUpload = async (uploadedFiles: File[]) => {
-    setFiles(uploadedFiles);
+    // setFiles(uploadedFiles);
     if (uploadedFiles.length === 0) return;
 
     setIsUploading(true);

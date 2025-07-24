@@ -27,7 +27,7 @@ export default function ChatPage() {
     } else if (!sessionId) {
       router.push("/upload");
     }
-  }, [isLoaded, isSignedIn, sessionId]);
+  }, [isLoaded, isSignedIn, sessionId, router]);
 
   if (!isLoaded || !isSignedIn || !sessionId) return null;
 

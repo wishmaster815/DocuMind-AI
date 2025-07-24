@@ -21,18 +21,8 @@ export function Workflow(): React.JSX.Element {
     // Horizontal animation of ul
     const controls = animate(
       container,
-      (
-        {
-          transform: [
-            `translateX(0px)`,
-            `translateX(${-((items.length - 1) * window.innerWidth)}px)`
-          ],
-        } as any
-      ),
-      {
-        easing: spring(),
-        duration: 1,
-      } as any
+      { transform: [`translateX(0px)`, `translateX(${calculated}px)`] },
+      { easing: spring(), duration: 1 }
     );
 
     scroll(controls, {
