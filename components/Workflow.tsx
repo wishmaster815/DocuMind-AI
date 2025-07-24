@@ -18,16 +18,15 @@ export function Workflow(): React.JSX.Element {
     const sectionEl = container.closest("section");
     if (!sectionEl) return;
 
-    // Horizontal animation of ul
+    const calculated = -(items.length - 1) * window.innerWidth;
+
+    // ✅ Use element reference directly — no TypeScript error
     const controls = animate(
-      container,
+      container as any,
+      { transform: [`translateX(0px)`, `translateX(${calculated}px)`] },
       {
-        transform: [
-          `translateX(0px)`,
-          `translateX(${-(items.length - 1) * window.innerWidth}px)`,
-        ],
-      },
-      { easing: spring(), duration: 1 }
+        duration: 1,
+      }
     );
 
     scroll(controls, {
@@ -35,17 +34,13 @@ export function Workflow(): React.JSX.Element {
       axis: "y",
     });
 
-    // Animate each h2 element based on scroll
     const segmentLength = 1 / items.length;
     items.forEach((item, i) => {
       const header = item.querySelector("h2");
       if (header) {
         scroll(animate(header, { x: [800, -800] }), {
           target: sectionEl,
-          offset: [
-            [i * segmentLength, 1],
-            [(i + 1) * segmentLength, 0],
-          ],
+          offset: [`${i * segmentLength} 1`, `${(i + 1) * segmentLength} 0`],
           axis: "y",
         });
       }
