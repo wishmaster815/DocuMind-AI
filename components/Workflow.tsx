@@ -1,46 +1,60 @@
-// @ts-nocheck
 "use client";
 
-import Image from "next/image";
+import * as React from "react";
 import { useEffect, useRef } from "react";
 import { animate, scroll, spring } from "motion";
 import { titles, bgColors } from "@/data";
 
-export function Workflow(): JSX.Element {
+export function Workflow(): React.JSX.Element {
   const ulRef = useRef<HTMLUListElement | null>(null);
 
   useEffect(() => {
-    const items = ulRef.current?.querySelectorAll("li") || [];
+    const container = ulRef.current;
+    if (!container) return;
 
-    if (ulRef.current && items.length > 0) {
-      const controls = animate(
-        ulRef.current,
+    const items = container.querySelectorAll("li");
+    if (items.length === 0) return;
+
+    const sectionEl = container.closest("section");
+    if (!sectionEl) return;
+
+    // Horizontal animation of ul
+    const controls = animate(
+      container,
+      (
         {
-          transform: ["none", `translateX(-${(items.length - 1) * 100}vw)`],
-        },
-        { easing: spring(), duration: 1 }
-      );
+          transform: [
+            `translateX(0px)`,
+            `translateX(${-((items.length - 1) * window.innerWidth)}px)`
+          ],
+        } as any
+      ),
+      {
+        easing: spring(),
+        duration: 1,
+      } as any
+    );
 
-      scroll(controls, {
-        target: ulRef.current.closest("section")!,
-        axis: "y",
-      });
+    scroll(controls, {
+      target: sectionEl,
+      axis: "y",
+    });
 
-      const segmentLength = 1 / items.length;
-      items.forEach((item, i) => {
-        const header = item.querySelector("h2");
-        if (header) {
-          scroll(animate(header, { x: [800, -800] }), {
-            target: ulRef.current.closest("section")!,
-            offset: [
-              [i * segmentLength, 1],
-              [(i + 1) * segmentLength, 0],
-            ],
-            axis: "y",
-          });
-        }
-      });
-    }
+    // Animate each h2 element based on scroll
+    const segmentLength = 1 / items.length;
+    items.forEach((item, i) => {
+      const header = item.querySelector("h2");
+      if (header) {
+        scroll(animate(header, { x: [800, -800] }), {
+          target: sectionEl,
+          offset: [
+            [i * segmentLength, 1],
+            [(i + 1) * segmentLength, 0],
+          ],
+          axis: "y",
+        });
+      }
+    });
   }, []);
 
   return (
@@ -59,13 +73,6 @@ export function Workflow(): JSX.Element {
                 <h2 className="text-[20vw] font-semibold text-black relative z-10">
                   {text}
                 </h2>
-                {/* <Image
-                  src="https://res.cloudinary.com/dzl9yxixg/image/upload/v1713532202/ui-layout/team_gsu8ej.png"
-                  className="absolute bottom-0 2xl:w-[550px] w-[380px] z-0"
-                  width={500}
-                  height={500}
-                  alt="Workflow Illustration"
-                /> */}
               </li>
             ))}
           </ul>
