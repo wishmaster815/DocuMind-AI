@@ -1,15 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FileUpload } from "@/components/ui/file-upload";
 import { NavbarButton } from "@/components/ui/resizable-navbar";
-
+import { useAuth } from "@clerk/nextjs";
 export default function UploadPage() {
   // const [files, setFiles] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState(false);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const router = useRouter();
+  const { isSignedIn, isLoaded } = useAuth();
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    if (!isSignedIn) {
+      router.push("/sign-in");
+    } else if (!sessionId) {
+      router.push("/upload");
+    }
+  }, [isLoaded, isSignedIn, sessionId, router]);
 
   const handleFileUpload = async (uploadedFiles: File[]) => {
     // setFiles(uploadedFiles);
